@@ -1,5 +1,6 @@
 import asyncio as asio
 import httpx as hx
+import json
 
 async def get_post(client, id, sem, attempts=3):
 	async with sem:
@@ -28,6 +29,10 @@ async def main():
 		else: 
 			posts.append(i)
 	print(f"{len(posts)} succeeded and {failed} failed")
+	with open("posts.json", "w", encoding="utf-8") as f:
+		json.dump(posts, f, indent=2)
+
+	print(f"{len(posts)} succeeded and {failed} failed.")
 
 asio.run(main())
 
