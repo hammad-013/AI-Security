@@ -33,3 +33,4 @@ Run the client:
 	```bash
 	python main.py
 	```
+Enter your question at the prompt (e.g., Explain network segmentation.), or type exit / quit to close the program.
