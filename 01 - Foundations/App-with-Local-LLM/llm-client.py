@@ -15,11 +15,11 @@ def verify_env():
 def ask_ollama(prompt: str):
 	try:
 		data = {"model": MODEL, "messages": [{"role": "user", "content": prompt}], "stream": False}
-		response = rq.post(f"{URL}/chat", json=data, timeout=60)
+		response = rq.post(f"{URL.rstrip("/")}/chat", json=data, timeout=60)
 		response.raise_for_status()
-		return response.json()
+		return response.json()["message"]["content"]
 	except rq.RequestException as e:
-		print(f"Error Occured: {e}")
+		return f"Error Occured: {e}"
 
 def chat_loop():
 	while True:
@@ -31,11 +31,11 @@ def chat_loop():
 			break
 		else:
 			print(f"\nSending to {MODEL}: {prompt}\n")
-			print(ask_ollama(prompt)["message"]["content"])
+			print("Response: ", ask_ollama(prompt))
 
 def main():
 	if verify_env() == True:
 		chat_loop()
 
-if __name__ == main():
+if __name__ == "__main__":
 	main()
