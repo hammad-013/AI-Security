@@ -10,7 +10,7 @@ A lightweight command-line Python client for chatting with a local LLM.
 
 ## Prerequisites
 - Python 3.10+
-- [Ollama](https://ollama.com/) installed and pulled `qwen2.5:3b`
+- [Ollama](https://ollama.com/) installed and pulled a model like `qwen2.5:3b`
 
 ## Setup
 
